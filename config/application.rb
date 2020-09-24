@@ -17,3 +17,10 @@ module MailAutomationApp
     # the framework and any gems in your application.
   end
 end
+
+module MarketPlaceApi
+  class Application < Rails::Application
+  # ...
+    config.eager_load_paths << Rails.root.join('lib')
+  end
+end
