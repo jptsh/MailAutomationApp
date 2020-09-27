@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MailAutomationApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+          <div class="container-fluid">
+        <div class="row bg-light">
+            <div class="col-lg-1">
+              <div class="navbar-brand">Navbar</div>
+            </div>
+            <div class="col-lg-4">
+              <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+            <div class="col-lg-4">
+                <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+        </div>
+        <div class="row" id="main-side-bar">
+            <div class="col-lg-2 bg-light vh-100">
+                <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
+                  <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                      <li class="nav-item pr-3">
+                          <img class="avatar" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+                      </li>
+                      <li class="nav-item">
+                          <a class="navbar-brand" href="#">
+                            SAITAMA
+                          </a>
+                      </li>
+                    </ul>
+                    <div class="ml-auto">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                  </div>
+                </nav>
+                <ul class="nav flex-column text-nowrap">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fas fa-users"></i> All contacts</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><%= link_to audiences_path do %>
+                        <i class="far fa-address-book"></i></i> Audience
+                      <% end %></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <%= yield %>
+            </div>
+    </div>
+</div>
+
+    
+         
+  </body>
+</html>

@@ -8,15 +8,41 @@
 require 'faker'
 
 Audience.destroy_all
+User.destroy_all
+Audience.delete_all
+User.delete_all
 
-10.times do
-  user = Audience.new(
+
+user1 = User.create! email: "jean@web.de", password:
+'locadex1234'
+puts "Created a new user: #{user1.email}"
+
+user2 = User.create! email: "mail.jp@protonmail.com", password:
+'locadex1234'
+puts "Created a new user: #{user2.email}"
+
+  3.times do
+    audience1 = Audience.create!(
     email_marketing: Faker::Internet.email,
     firstname:Faker::Name.first_name,
     lastname:Faker::Name.last_name,
     address:Faker::Address.street_address,
     phone:Faker::PhoneNumber.cell_phone,
     birthday:Faker::Date.birthday(min_age: 18, max_age: 65),
-    tags:Faker::Lorem.word)
-  user.save
-end
+    tags:Faker::Lorem.word,
+    user_id: user1.id)
+    puts "Created a brand new Audience Member: #{audience1.firstname}"
+  end
+
+  3.times do
+    audience2 = Audience.create!(
+    email_marketing: Faker::Internet.email,
+    firstname:Faker::Name.first_name,
+    lastname:Faker::Name.last_name,
+    address:Faker::Address.street_address,
+    phone:Faker::PhoneNumber.cell_phone,
+    birthday:Faker::Date.birthday(min_age: 18, max_age: 65),
+    tags:Faker::Lorem.word,
+    user_id: user2.id)
+    puts "Created a brand new Audience Member: #{audience2.firstname}"
+  end
